@@ -14,7 +14,7 @@ export class CheckdetailService {
 
     //output = "";
     //console.log(session);
-    return this.http.get('https://internal.crspark.com/login/frontService.php?login='+login+'&token='+token)
+    return this.http.get('https://yourservice.com/login/frontService.php?login='+login+'&token='+token)
 
 
       // .map(
@@ -30,7 +30,7 @@ export class CheckdetailService {
   }
 
   getUsers(){
-      return this.http.get('https://internal.crspark.com/login/frontService.php?userdetails')
+      return this.http.get('https://yourservice.com/login/frontService.php?userdetails')
   }
 
 }
