@@ -1,0 +1,135 @@
+<div class="modal-header">
+  <h4 class="modal-title">New User {{ idtest }}</h4>
+  <button type="button" class="close" aria-label="Close"
+   (click)="activeModal.dismiss('Cross click')">
+   <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<form [formGroup]="newUser" (ngSubmit)="submitForm()">
+  <div class="modal-boy">
+    <div class="container">
+      <div class="form-group">
+        <label for="AccessUserGroup">AccessUserGroup*</label>
+
+        <!-- <input type="text"
+          class="form-control"
+          formControlName="AccessUserGroup" [ngClass]="{ 'is-invalid': submitted && f.AccessUserGroup.errors }"/> -->
+
+
+          <select class="form-control"
+          formControlName="AccessUserGroup" [ngClass]="{ 'is-invalid': submitted && f.AccessUserGroup.errors }">
+              <option *ngFor = 'let AccessUserGroupOption of AccessUserGroupOptions' [value]="AccessUserGroupOption">
+                    {{AccessUserGroupOption}}
+                </option>
+          </select>
+
+          <div *ngIf="submitted && f.AccessUserGroup.errors" class="invalid-feedback">
+                            <div *ngIf="f.AccessUserGroup.errors.required">Access User Group is required</div>
+                        </div>
+      </div>
+      <div class="form-group">
+        <label for="AccessUserLogin">AccessUserLogin*</label>&nbsp;&nbsp;&nbsp;<span style="cursor:pointer;color:green" (click)="checkusername()">[Check UserName]</span>
+        <input type="text" class="form-control" formControlName="AccessUserLogin" [ngClass]="{ 'is-invalid': submitted && f.AccessUserLogin.errors }" >
+        <div *ngIf="submitted && f.AccessUserLogin.errors" class="invalid-feedback">
+                          <div *ngIf="f.AccessUserLogin.errors.required">Access User Login is required</div>
+                      </div>
+      </div>
+
+      <div class="form-group">
+        <label for="AccessUserFullName">AccessUserFullName</label>
+        <input type="text"
+          class="form-control"
+          formControlName="AccessUserFullName" [ngClass]="{ 'is-invalid': submitted && f.AccessUserFullName.errors }"/>
+          <div *ngIf="submitted && f.AccessUserFullName.errors" class="invalid-feedback">
+                            <div *ngIf="f.AccessUserFullName.errors.required">Access User Full Name is required</div>
+                        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="AccessUserPassword">AccessUserPassword</label>
+        <input type="password"
+          class="form-control"
+          formControlName="AccessUserPassword" [ngClass]="{ 'is-invalid': submitted && f.AccessUserPassword.errors }"/>
+          <div *ngIf="submitted && f.AccessUserPassword.errors" class="invalid-feedback">
+                            <div *ngIf="f.AccessUserPassword.errors.required">Access User Password is required</div>
+                            <div *ngIf="f.AccessUserPassword.errors.minlength">Password must be at least 6 characters</div>
+                        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="AccessUserEmail">AccessUserEmail</label>
+        <input type="text"
+          class="form-control"
+          formControlName="AccessUserEmail" [ngClass]="{ 'is-invalid': submitted && f.AccessUserEmail.errors }"/>
+          <div *ngIf="submitted && f.AccessUserEmail.errors" class="invalid-feedback">
+            <div *ngIf="f.AccessUserEmail.errors.required">Email is required</div>
+            <div *ngIf="f.AccessUserEmail.errors.email">Email must be a valid email address</div>
+                        </div>
+      </div>
+
+      <!-- <div class="form-group">
+        <label for="AccessUserStatus">AccessUserStatus</label>
+
+        <input type="text"
+          class="form-control"
+          formControlName="AccessUserStatus" [ngClass]="{ 'is-invalid': submitted && f.AccessUserStatus.errors }"/>
+          <div *ngIf="submitted && f.AccessUserStatus.errors" class="invalid-feedback">
+            <div *ngIf="f.AccessUserEmail.errors.required">AccessUserStatus is required</div>
+          </div>
+
+
+
+      </div> -->
+
+
+      <div class="form-group">
+  <label>AccessUserStatus</label>
+  <div class="row" style="padding-left: 16px;">
+    <label class="md-check">
+      <input type="radio" value="1" name="AccessUserStatus" formControlName="AccessUserStatus" [ngClass]="{ 'is-invalid': submitted && f.AccessUserStatus.errors }">
+      Enable&nbsp;&nbsp;&nbsp;&nbsp;
+    </label>
+
+    <label class="md-check">
+      <input type="radio"  value="0" name="AccessUserStatus" formControlName="AccessUserStatus" [ngClass]="{ 'is-invalid': submitted && f.AccessUserStatus.errors }">
+      Disable
+    </label>
+  </div>
+
+  <div *ngIf="submitted && f.AccessUserStatus.errors" class="invalid-feedback">
+    <div *ngIf="f.AccessUserEmail.errors.required">AccessUserStatus is required</div>
+  </div>
+</div>
+
+
+
+
+      <div class="form-group">
+        <label for="AccessUserRegistered">AccessUserRegistered</label>
+        <!-- <mat-form-field class="example-full-width">
+        <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Choose a date" class="form-control"
+        formControlName="AccessUserRegistered" [ngClass]="{ 'is-invalid': submitted && f.AccessUserRegistered.errors }"/>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field> -->
+
+      <mat-form-field>
+  <input matInput [matDatepicker]="picker" formControlName="AccessUserRegistered" placeholder="Choose a date" [ngClass]="{ 'is-invalid': submitted && f.AccessUserRegistered.errors }">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+          <div *ngIf="submitted && f.AccessUserRegistered.errors" class="invalid-feedback">
+                            <div *ngIf="f.AccessUserRegistered.errors.required">Access User Registration is required</div>
+                        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary">
+      Submit Form
+    </button>
+  </div>
+</form>

@@ -1,0 +1,33 @@
+<div class="container">
+
+  <div>
+    <h1>Clients list</h1>
+    <h3><a style="cursor: pointer;" (click)="open()">Add User</a></h3>
+    </div>
+  <table class="table table-hover" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Login</th>
+        <th>Full Name</th>
+        <th>Password</th>
+        <th>Email</th>
+        <th>Registration Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let client of clients">
+        <td>{{client.AccessUserLogin}}</td>
+        <td>{{client.AccessUserFullName}}</td>
+        <td>{{client.AccessUserPassword}}</td>
+        <td>{{client.AccessUserEmail}}</td>
+        <td>{{client.AccessUserRegistered}}</td>
+        <td><a style="cursor: pointer;" (click)="open(client.AccessUserID)">Edit</a> | <a style="cursor: pointer;" (click)="deleteUser(client.AccessUserID)">Delete</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- <app-edit-user></app-edit-user> -->
+<!-- <p>You can pass an existing component as content of the modal window. In this case remember to add content component
+as an <code>entryComponents</code> section of your <code>NgModule</code>.</p> -->
